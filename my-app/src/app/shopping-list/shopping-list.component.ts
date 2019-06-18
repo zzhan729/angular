@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { ShoppingListDataSource, ShoppingListItem } from './shopping-list-datasource';
-
+import {ShoppingListService} from '../service/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -14,11 +14,17 @@ export class ShoppingListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable, {static: false}) table: MatTable<ShoppingListItem>;
   dataSource: ShoppingListDataSource;
 
+  constructor(private shoppingListService:ShoppingListService){}
+
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name','price','button'];
+  displayedColumns = ['name','price','button'];
 
   ngOnInit() {
-    this.dataSource = new ShoppingListDataSource();
+    this.shoppingListService.getList()
+  .subscribe(list=>{
+    console.log(list);
+  });
+    this.dataSource = new ShoppingListDataSource(this.shoppingListService);
   }
 
   ngAfterViewInit() {

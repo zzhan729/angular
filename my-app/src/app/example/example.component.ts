@@ -1,23 +1,23 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
-import { ListDataSource, ListItem } from './list-datasource';
+import { ExampleDataSource, ExampleItem } from './example-datasource';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-example',
+  templateUrl: './example.component.html',
+  styleUrls: ['./example.component.css']
 })
-export class ListComponent implements AfterViewInit, OnInit {
+export class ExampleComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<ListItem>;
-  dataSource: ListDataSource;
+  @ViewChild(MatTable, {static: false}) table: MatTable<ExampleItem>;
+  dataSource: ExampleDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
   ngOnInit() {
-    this.dataSource = new ListDataSource();
+    this.dataSource = new ExampleDataSource();
   }
 
   ngAfterViewInit() {
