@@ -8,14 +8,12 @@ import { MatButtonModule,MatCheckboxModule, MatTableModule, MatPaginatorModule, 
 import { TitleComponent } from './title/title.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule} from '@angular/common/http';
-import { ListComponent } from './list/list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TitleComponent,
-    ListComponent,
   ],
   imports: [
     BrowserModule,
